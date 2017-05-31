@@ -16,7 +16,7 @@ Some of these exporters are maintained as part of the official [Prometheus GitHu
 those are marked as *official*, others are externally contributed and maintained.
 
 We encourage the creation of more exporters but, cannot vet all of them for
-[best practices](https://prometheus.io/docs/instrumenting/writing_exporters/).
+[best practices](/docs/instrumenting/writing_exporters/).
 Commonly, those exporters are hosted outside of the Prometheus GitHub
 organization.
 
@@ -38,6 +38,7 @@ wide variety of JVM-based applications, for example [Kafka](http://kafka.apache.
    * [Memcached exporter](https://github.com/prometheus/memcached_exporter) (**official**)
    * [MongoDB exporter](https://github.com/dcu/mongodb_exporter)
    * [MySQL server exporter](https://github.com/prometheus/mysqld_exporter) (**official**)
+   * [OpenTSDB Exporter](https://github.com/cloudflare/opentsdb_exporter)
    * [PgBouncer exporter](http://git.cbaines.net/prometheus-pgbouncer-exporter/about)
    * [PostgreSQL exporter](https://github.com/wrouesnel/postgres_exporter)
    * [ProxySQL exporter](https://github.com/percona/proxysql_exporter)
@@ -55,6 +56,7 @@ wide variety of JVM-based applications, for example [Kafka](http://kafka.apache.
    * [Ubiquiti UniFi exporter](https://github.com/mdlayher/unifi_exporter)
 
 ### Messaging systems
+   * [Kafka consumer group exporter](https://github.com/kawamuray/prometheus-kafka-consumer-group-exporter)
    * [NATS exporter](https://github.com/lovoo/nats_exporter)
    * [NSQ exporter](https://github.com/lovoo/nsq_exporter)
    * [RabbitMQ exporter](https://github.com/kbudde/rabbitmq_exporter)
@@ -106,9 +108,11 @@ wide variety of JVM-based applications, for example [Kafka](http://kafka.apache.
    * [JavaMelody exporter](https://github.com/fschlag/javamelody-prometheus-exporter)
    * [JMX exporter](https://github.com/prometheus/jmx_exporter) (**official**)
    * [Munin exporter](https://github.com/pvdh/munin_exporter)
+   * [Naemon exporter](https://github.com/Griesbacher/Iapetos)
    * [New Relic exporter](https://github.com/jfindley/newrelic_exporter)
    * [Pingdom exporter](https://github.com/giantswarm/prometheus-pingdom-exporter)
    * [scollector exporter](https://github.com/tgulacsi/prometheus_scollector)
+   * [Sensu exporter](https://github.com/reachlin/sensu_exporter)
    * [SNMP exporter](https://github.com/prometheus/snmp_exporter) (**official**)
    * [StatsD exporter](https://github.com/prometheus/statsd_exporter) (**official**)
 
@@ -117,12 +121,13 @@ wide variety of JVM-based applications, for example [Kafka](http://kafka.apache.
    * [BIND exporter](https://github.com/digitalocean/bind_exporter)
    * [Blackbox exporter](https://github.com/prometheus/blackbox_exporter) (**official**)
    * [BOSH exporter](https://github.com/cloudfoundry-community/bosh_exporter)
+   * [cAdvisor](https://github.com/google/cadvisor)
    * [Dovecot exporter](https://github.com/kumina/dovecot_exporter)
    * [Jenkins exporter](https://github.com/lovoo/jenkins_exporter)
    * [Kemp LoadBalancer exporter](https://github.com/giantswarm/prometheus-kemp-exporter)
    * [Meteor JS web framework exporter](https://atmospherejs.com/sevki/prometheus-exporter)
    * [Minecraft exporter module](https://github.com/Baughn/PrometheusIntegration)
-   * [PowerDNS exporter](https://github.com/janeczku/powerdns_exporter)
+   * [PowerDNS exporter](https://github.com/ledgr/powerdns_exporter)
    * [Process exporter](https://github.com/ncabatoff/process-exporter)
    * [rTorrent exporter](https://github.com/mdlayher/rtorrent_exporter)
    * [Script exporter](https://github.com/adhocteam/script_exporter)
@@ -138,20 +143,25 @@ list](https://groups.google.com/forum/#!forum/prometheus-developers).  We are
 happy to give advice on how to make your exporter as useful and consistent as
 possible.
 
-## Directly instrumented software
+## Software exposing Prometheus metrics
 
-Some third-party software already exposes Prometheus metrics natively, so no
+Some third-party software exposes metrics in the Prometheus format, so no
 separate exporters are needed:
 
-   * [cAdvisor](https://github.com/google/cadvisor)
-   * [Doorman](https://github.com/youtube/doorman)
-   * [Etcd](https://github.com/coreos/etcd)
-   * [Kubernetes-Mesos](https://github.com/mesosphere/kubernetes-mesos)
-   * [Kubernetes](https://github.com/kubernetes/kubernetes)
+   * [Collectd](https://collectd.org/wiki/index.php/Plugin:Write_Prometheus)
+   * [Doorman](https://github.com/youtube/doorman) (**direct**)
+   * [Etcd](https://github.com/coreos/etcd) (**direct**)
+   * [Kubernetes](https://github.com/kubernetes/kubernetes) (**direct**)
+   * [Linkerd](https://github.com/BuoyantIO/linkerd)
+   * [Netdata](https://github.com/firehol/netdata)
+   * [Pretix](https://pretix.eu/)
+   * [Quobyte](https://www.quobyte.com/) (**direct**)
    * [RobustIRC](http://robustirc.net/)
-   * [Quobyte](https://www.quobyte.com/)
-   * [SkyDNS](https://github.com/skynetservices/skydns)
-   * [Weave Flux](http://weaveworks.github.io/flux/)
+   * [SkyDNS](https://github.com/skynetservices/skydns) (**direct**)
+   * [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client)
+   * [Weave Flux](https://github.com/weaveworks/flux)
+
+The software marked *direct* is also directly instrumented with a Prometheus client library.
 
 ## Other third-party utilities
 
